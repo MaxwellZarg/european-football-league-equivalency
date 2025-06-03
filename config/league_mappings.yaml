@@ -1,78 +1,550 @@
-# League configuration and mappings
+# League configuration and mappings - Cross-League Analysis Framework
 leagues:
+  # TIER 1 - MAJOR EUROPEAN LEAGUES (No predetermined hierarchy)
   premier_league:
     name: "Premier League"
     abbreviation: "EPL"
     tier: 1
-    equivalency_factor: 1.000
+    country: "England"
+    equivalency_factor: null  # To be determined by analysis
     fbref_name: "Premier-League"
+    data_path: "England"
     
+  la_liga:
+    name: "La Liga"
+    abbreviation: "LLG"
+    tier: 1
+    country: "Spain"
+    equivalency_factor: null  # To be determined by analysis
+    fbref_name: "La-Liga"
+    data_path: "Spain"
+    
+  serie_a:
+    name: "Serie A"
+    abbreviation: "SA"
+    tier: 1
+    country: "Italy"
+    equivalency_factor: null  # To be determined by analysis
+    fbref_name: "Serie-A"
+    data_path: "Italy"
+    
+  bundesliga:
+    name: "Bundesliga"
+    abbreviation: "BL"
+    tier: 1
+    country: "Germany"
+    equivalency_factor: null  # To be determined by analysis
+    fbref_name: "Bundesliga"
+    data_path: "Germany"
+    
+  ligue_1:
+    name: "Ligue 1"
+    abbreviation: "L1F"
+    tier: 1
+    country: "France"
+    equivalency_factor: null  # To be determined by analysis
+    fbref_name: "Ligue-1"
+    data_path: "France"
+    
+  primeira_liga:
+    name: "Primeira Liga"
+    abbreviation: "PL"
+    tier: 1
+    country: "Portugal"
+    equivalency_factor: null  # To be determined by analysis
+    fbref_name: "Primeira-Liga"
+    data_path: "Portugal"
+    
+  eredivisie:
+    name: "Eredivisie"
+    abbreviation: "ED"
+    tier: 1
+    country: "Netherlands"
+    equivalency_factor: null  # To be determined by analysis
+    fbref_name: "Eredivisie"
+    data_path: "Netherlands"
+
+  # ENGLISH LOWER TIERS (for English pyramid analysis)
   championship:
     name: "Championship"
     abbreviation: "CHAMP"
     tier: 2
-    equivalency_factor: null
+    country: "England"
+    equivalency_factor: null  # To be determined by analysis
     fbref_name: "Championship"
+    data_path: "England"
     
   league_one:
     name: "League One"
     abbreviation: "L1"
     tier: 3
-    equivalency_factor: null
+    country: "England"
+    equivalency_factor: null  # To be determined by analysis
     fbref_name: "League-One"
+    data_path: "England"
     
   league_two:
     name: "League Two"
     abbreviation: "L2"
     tier: 4
-    equivalency_factor: null
+    country: "England"
+    equivalency_factor: null  # To be determined by analysis
     fbref_name: "League-Two"
+    data_path: "England"
 
-# Common statistics available across ALL leagues (based on actual data)
-common_stats:
-  - "player"
-  - "nationality"
-  - "position"
-  - "team"
-  - "age"
-  - "birth_year"
-  # From shooting stats (available in all leagues)
-  - "goals"
-  - "shots"
-  - "shots_on_target"
-  # From misc stats (available in all leagues)  
-  - "cards_yellow"
-  - "cards_red"
-  - "fouls"
-  - "fouled"
+# Data availability mapping by league and time period
+data_availability:
+  # Column availability by stat file type
+  stat_file_columns:
+    standard:
+      # Available in all European leagues 2017+, Premier League all years
+      always_available:
+        - "player"
+        - "player_id"
+        - "nationality"
+        - "position" 
+        - "team"
+        - "age"
+        - "birth_year"
+        - "games"
+        - "games_starts"
+        - "minutes"
+        - "minutes_90s"
+        - "goals"
+        - "assists"
+        - "goals_assists"
+        - "cards_yellow"
+        - "cards_red"
+        - "goals_per90"
+        - "assists_per90"
+        - "goals_assists_per90"
+      
+      # Available in European leagues 2017+, some English leagues
+      advanced_metrics:
+        - "xg"
+        - "npxg"
+        - "xg_assist"
+        - "npxg_xg_assist"
+        - "progressive_carries"
+        - "progressive_passes"
+        - "progressive_passes_received"
+        - "xg_per90"
+        - "xg_assist_per90"
+        - "npxg_per90"
+        - "xg_xg_assist_per90"
+        - "npxg_xg_assist_per90"
+      
+      # Penalty and disciplinary (varies by league/year)
+      disciplinary:
+        - "goals_pens"
+        - "pens_made"
+        - "pens_att"
+        - "goals_pens_per90"
+        - "goals_assists_pens_per90"
+    
+    shooting:
+      always_available:
+        - "player"
+        - "nationality"
+        - "position"
+        - "team"
+        - "age"
+        - "birth_year"
+        - "minutes_90s"
+        - "goals"
+        - "shots"
+        - "shots_on_target"
+        - "shots_per90"
+        - "shots_on_target_per90"
+        - "goals_per_shot"
+        - "goals_per_shot_on_target"
+        - "pens_made"
+        - "pens_att"
+      
+      advanced_metrics:
+        - "shots_on_target_pct"
+        - "average_shot_distance"
+        - "shots_free_kicks"
+        - "xg"
+        - "npxg"
+        - "npxg_per_shot"
+        - "xg_net"
+        - "npxg_net"
+    
+    passing:
+      always_available:
+        - "player"
+        - "nationality"
+        - "position"
+        - "team"
+        - "age"
+        - "birth_year"
+        - "minutes_90s"
+        - "passes_completed"
+        - "passes"
+        - "passes_pct"
+        - "assists"
+      
+      advanced_metrics:
+        - "passes_total_distance"
+        - "passes_progressive_distance"
+        - "passes_completed_short"
+        - "passes_short"
+        - "passes_pct_short"
+        - "passes_completed_medium"
+        - "passes_medium"
+        - "passes_pct_medium"
+        - "passes_completed_long"
+        - "passes_long"
+        - "passes_pct_long"
+        - "xg_assist"
+        - "pass_xa"
+        - "xg_assist_net"
+        - "assisted_shots"
+        - "passes_into_final_third"
+        - "passes_into_penalty_area"
+        - "crosses_into_penalty_area"
+        - "progressive_passes"
+    
+    defense:
+      always_available:
+        - "player"
+        - "nationality"
+        - "position"
+        - "team"
+        - "age"
+        - "birth_year"
+        - "minutes_90s"
+        - "tackles"
+        - "tackles_won"
+        - "interceptions"
+        - "clearances"
+        - "blocks"
+      
+      advanced_metrics:
+        - "tackles_def_3rd"
+        - "tackles_mid_3rd"
+        - "tackles_att_3rd"
+        - "challenge_tackles"
+        - "challenges"
+        - "challenge_tackles_pct"
+        - "challenges_lost"
+        - "blocked_shots"
+        - "blocked_passes"
+        - "tackles_interceptions"
+        - "errors"
+    
+    misc:
+      always_available:
+        - "player"
+        - "nationality"
+        - "position"
+        - "team"
+        - "age"
+        - "birth_year"
+        - "minutes_90s"
+        - "cards_yellow"
+        - "cards_red"
+        - "fouls"
+        - "fouled"
+        - "offsides"
+      
+      advanced_metrics:
+        - "cards_yellow_red"
+        - "crosses"
+        - "interceptions"
+        - "tackles_won"
+        - "pens_won"
+        - "pens_conceded"
+        - "own_goals"
+        - "ball_recoveries"
+        - "aerials_won"
+        - "aerials_lost"
+        - "aerials_won_pct"
 
-# Position groupings
+  # League-specific data availability notes
+  league_specific_notes:
+    premier_league:
+      full_data_seasons: ["2014-2015", "2015-2016", "2016-2017", "2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "2017-2018"
+      notes: "Most comprehensive dataset - all stat types available"
+    
+    la_liga:
+      full_data_seasons: ["2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "2017-2018"
+      notes: "Complete advanced stats available 2017+"
+    
+    serie_a:
+      full_data_seasons: ["2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "2017-2018"
+      notes: "Complete advanced stats available 2017+"
+    
+    bundesliga:
+      full_data_seasons: ["2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "2017-2018"
+      notes: "Complete advanced stats available 2017+"
+    
+    ligue_1:
+      full_data_seasons: ["2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "2017-2018"
+      notes: "Complete advanced stats available 2017+"
+    
+    primeira_liga:
+      full_data_seasons: ["2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "2017-2018"
+      notes: "Complete advanced stats available 2017+"
+    
+    eredivisie:
+      full_data_seasons: ["2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "2017-2018"
+      notes: "Complete advanced stats available 2017+"
+    
+    championship:
+      full_data_seasons: ["2014-2015", "2015-2016", "2016-2017", "2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "2017-2018"
+      notes: "Limited advanced metrics in early years"
+    
+    league_one:
+      full_data_seasons: ["2014-2015", "2015-2016", "2016-2017", "2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "never"
+      notes: "Basic stats only - no xG or advanced metrics"
+    
+    league_two:
+      full_data_seasons: ["2014-2015", "2015-2016", "2016-2017", "2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+      advanced_metrics_since: "never"
+      notes: "Basic stats only - no xG or advanced metrics"
+
+# Recommended analysis columns by analysis type
+recommended_columns:
+  cross_league_equivalency:
+    primary:
+      - "goals_per90"
+      - "assists_per90"
+      - "goals_assists_per90"
+      - "minutes_90s"
+      - "shots_per90"
+    
+    advanced:
+      - "xg_per90"
+      - "npxg_per90"
+      - "xg_assist_per90"
+      - "progressive_passes"
+      - "progressive_carries"
+    
+    fallback:  # When advanced metrics not available
+      - "goals"
+      - "assists"
+      - "shots"
+      - "minutes"
+      - "games"
+  
+  player_transitions:
+    required:
+      - "player"
+      - "player_id"
+      - "team"
+      - "minutes"
+      - "goals"
+      - "assists"
+    
+    preferred:
+      - "minutes_90s"
+      - "goals_per90"
+      - "assists_per90"
+      - "xg_per90"
+      - "shots_per90"
+  
+  league_baselines:
+    core_metrics:
+      - "goals_per90"
+      - "assists_per90"
+      - "shots_per90"
+      - "passes_pct"
+      - "tackles_per90"
+    
+    style_indicators:
+      - "progressive_passes"
+      - "crosses"
+      - "aerials_won_pct"
+      - "fouls"
+      - "cards_yellow"
+
+# Enhanced position groupings for European data
 position_groups:
-  forwards: ["FW", "CF", "ST", "LW", "RW"]
-  midfielders: ["MF", "CM", "CAM", "CDM", "LM", "RM", "AM", "DM"]
-  defenders: ["DF", "CB", "LB", "RB", "LWB", "RWB", "WB"]
+  forwards: ["FW", "CF", "ST", "LW", "RW", "RF", "LF"]
+  midfielders: ["MF", "CM", "CAM", "CDM", "LM", "RM", "AM", "DM", "MC"]
+  defenders: ["DF", "CB", "LB", "RB", "LWB", "RWB", "WB", "DC"]
   goalkeepers: ["GK"]
 
-# Data files available (what actually exists)
+# Data files available across European leagues
 data_files:
-  shooting: "shooting_stats.csv"
-  passing: "passing_stats.csv"
-  defense: "defense_stats.csv"
-  gca: "gca_stats.csv"
-  misc: "misc_stats.csv"
-  playingtime: "playingtime_stats.csv"
-  # standard only exists for EPL and Championship
-  standard: "standard_stats.csv"
+  standard: "standard_stats.csv"     # Full stats (Premier League, European leagues 2017+)
+  shooting: "shooting_stats.csv"     # Available in all leagues
+  passing: "passing_stats.csv"      # Available in all leagues  
+  defense: "defense_stats.csv"      # Available in all leagues
+  misc: "misc_stats.csv"           # Available in all leagues
+  gca: "gca_stats.csv"             # Goal/Shot Creation (European leagues only)
+  playingtime: "playingtime_stats.csv"  # Playing time stats
 
-# Available seasons
+# Season configurations by league type
 seasons:
-  - "2014-2015"
-  - "2015-2016"
-  - "2016-2017"
-  - "2017-2018"
-  - "2018-2019"
-  - "2019-2020"
-  - "2020-2021"
-  - "2021-2022"
-  - "2022-2023"
-  - "2023-2024"
+  # All seasons available
+  all_seasons:
+    - "2014-2015"
+    - "2015-2016" 
+    - "2016-2017"
+    - "2017-2018"
+    - "2018-2019"
+    - "2019-2020"
+    - "2020-2021"
+    - "2021-2022"
+    - "2022-2023"
+    - "2023-2024"
+  
+  # European leagues (complete stats era)
+  european_seasons:
+    - "2017-2018"
+    - "2018-2019"
+    - "2019-2020"
+    - "2020-2021"
+    - "2021-2022"
+    - "2022-2023"
+    - "2023-2024"
+  
+  # English leagues (full historical data)
+  english_seasons:
+    - "2014-2015"
+    - "2015-2016"
+    - "2016-2017"
+    - "2017-2018"
+    - "2018-2019"
+    - "2019-2020"
+    - "2020-2021"
+    - "2021-2022"
+    - "2022-2023"
+    - "2023-2024"
+
+# League groupings for different types of analysis
+league_groups:
+  # Major European leagues (no predetermined ranking)
+  tier_1_european:
+    - "premier_league"
+    - "la_liga"
+    - "serie_a" 
+    - "bundesliga"
+    - "ligue_1"
+    - "primeira_liga"
+    - "eredivisie"
+    
+  # English pyramid for domestic analysis
+  english_pyramid:
+    - "premier_league"
+    - "championship"
+    - "league_one"
+    - "league_two"
+    
+  # Traditional "Big 5" for comparison
+  big_5:
+    - "premier_league"
+    - "la_liga"
+    - "serie_a"
+    - "bundesliga"
+    - "ligue_1"
+    
+  # All European leagues for comprehensive analysis
+  all_european:
+    - "premier_league"
+    - "la_liga"
+    - "serie_a"
+    - "bundesliga" 
+    - "ligue_1"
+    - "primeira_liga"
+    - "eredivisie"
+
+# Cross-league analysis configuration
+cross_league_analysis:
+  # No reference league - discover natural relationships
+  reference_league: null
+  
+  # Key metrics for league comparison
+  primary_metrics:
+    - "goals_per90"
+    - "assists_per90" 
+    - "goals_assists_per90"
+    - "shots_per90"
+    - "xg_per90"
+    
+  # Transition analysis parameters
+  transition_analysis:
+    min_games_each_league: 5      # Minimum games in both leagues
+    min_minutes_each_league: 450  # Minimum minutes in both leagues
+    max_gap_between_seasons: 2    # Max seasons between league changes
+    
+  # League baseline analysis
+  baseline_analysis:
+    min_players_per_league: 100   # Minimum sample size
+    min_minutes_for_inclusion: 900 # ~10 full games
+    exclude_goalkeepers: true     # Focus on outfield players
+    
+  # Statistical parameters
+  statistical_params:
+    confidence_level: 0.85        # 85% confidence intervals
+    bootstrap_samples: 1000       # For robust estimates
+    min_transitions_for_factor: 15 # Minimum transitions between leagues
+
+# Data paths configuration
+data_paths:
+  # European leagues structure
+  european_base: "data/raw/european_leagues"
+  
+  # English leagues structure (your existing data)
+  english_base: "data/raw"
+  
+  # Processed data
+  processed: "data/processed"
+
+# Quality thresholds for cross-league analysis
+data_quality:
+  min_minutes_per_season: 270      # ~3 full games
+  min_games_per_season: 5          # Minimum appearances
+  max_missing_rate: 0.15           # 15% missing data tolerance
+  min_sample_size: 30              # Minimum players for analysis
+
+# Analysis configuration for hybrid approach
+analysis:
+  # Method A: Pairwise Transition Analysis
+  pairwise_transitions:
+    enabled: true
+    weight: 0.6  # 60% weight in hybrid model
+    min_sample_size: 10
+    metrics:
+      - "goals_per90"
+      - "assists_per90"
+      - "shots_per90"
+      - "xg_per90"
+    
+  # Method B: League Productivity Baselines  
+  league_baselines:
+    enabled: true
+    weight: 0.4  # 40% weight in hybrid model
+    metrics:
+      - "goals_per90"
+      - "assists_per90"
+      - "shots_per90"
+      - "passes_per90"
+      - "tackles_per90"
+    
+  # Method C: Cross-Validation
+  cross_validation:
+    enabled: true
+    validation_methods:
+      - "bootstrap_comparison"
+      - "holdout_testing"
+      - "consistency_check"
+    
+  # Output preferences
+  output:
+    create_league_network: true
+    create_transition_matrix: true
+    create_baseline_comparison: true
+    save_individual_transitions: true
