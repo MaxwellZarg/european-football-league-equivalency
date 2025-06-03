@@ -1,0 +1,78 @@
+# League configuration and mappings
+leagues:
+  premier_league:
+    name: "Premier League"
+    abbreviation: "EPL"
+    tier: 1
+    equivalency_factor: 1.000
+    fbref_name: "Premier-League"
+    
+  championship:
+    name: "Championship"
+    abbreviation: "CHAMP"
+    tier: 2
+    equivalency_factor: null
+    fbref_name: "Championship"
+    
+  league_one:
+    name: "League One"
+    abbreviation: "L1"
+    tier: 3
+    equivalency_factor: null
+    fbref_name: "League-One"
+    
+  league_two:
+    name: "League Two"
+    abbreviation: "L2"
+    tier: 4
+    equivalency_factor: null
+    fbref_name: "League-Two"
+
+# Common statistics available across ALL leagues (based on actual data)
+common_stats:
+  - "player"
+  - "nationality"
+  - "position"
+  - "team"
+  - "age"
+  - "birth_year"
+  # From shooting stats (available in all leagues)
+  - "goals"
+  - "shots"
+  - "shots_on_target"
+  # From misc stats (available in all leagues)  
+  - "cards_yellow"
+  - "cards_red"
+  - "fouls"
+  - "fouled"
+
+# Position groupings
+position_groups:
+  forwards: ["FW", "CF", "ST", "LW", "RW"]
+  midfielders: ["MF", "CM", "CAM", "CDM", "LM", "RM", "AM", "DM"]
+  defenders: ["DF", "CB", "LB", "RB", "LWB", "RWB", "WB"]
+  goalkeepers: ["GK"]
+
+# Data files available (what actually exists)
+data_files:
+  shooting: "shooting_stats.csv"
+  passing: "passing_stats.csv"
+  defense: "defense_stats.csv"
+  gca: "gca_stats.csv"
+  misc: "misc_stats.csv"
+  playingtime: "playingtime_stats.csv"
+  # standard only exists for EPL and Championship
+  standard: "standard_stats.csv"
+
+# Available seasons
+seasons:
+  - "2014-2015"
+  - "2015-2016"
+  - "2016-2017"
+  - "2017-2018"
+  - "2018-2019"
+  - "2019-2020"
+  - "2020-2021"
+  - "2021-2022"
+  - "2022-2023"
+  - "2023-2024"
