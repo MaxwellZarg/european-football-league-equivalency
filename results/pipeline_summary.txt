@@ -1,27 +1,40 @@
-EUROPEAN TRANSFER PREDICTION PIPELINE SUMMARY
+LEAGUE PERFORMANCE PREDICTION PIPELINE SUMMARY
 ============================================================
 
-Pipeline executed: 2025-06-04 17:07:40
+Pipeline executed: 2025-06-05 00:23:52
 
 DATA SUMMARY:
-  Total Players: 100,310
-  Total Features: 157
-  Transfer Rate: 65.1%
-  Leagues: premier_league, la_liga, serie_a, bundesliga, ligue_1, primeira_liga, eredivisie
+  Total Players: 86,384
+  Player Transitions: 934
+  Equivalency Factors: 32
+  Training Examples: 934
 
 MODEL PERFORMANCE:
   Best Model: random_forest
-  Accuracy: 1.000
-  ROC AUC: 1.000
+  Overall MAE: 0.0920
+  Goals R^2: 0.517
+  Assists R^2: 0.207
 
-TOP 10 FEATURES:
-   1. league_pair: 0.5265
-   2. games: 0.0506
-   3. team_total_minutes: 0.0288
-   4. minutes_90s: 0.0175
-   5. minutes: 0.0167
-   6. minutes_pct: 0.0164
-   7. goals_team_share: 0.0135
-   8. assists_team_share: 0.0098
-   9. style_adaptation_required: 0.0096
-  10. passes_completed_short: 0.0094
+TOP EQUIVALENCY FACTORS:
+          ligue_1 ->  premier_league: 0.815 (n=65)
+          la_liga ->  premier_league: 0.813 (n=60)
+          ligue_1 ->         serie_a: 0.805 (n=52)
+          ligue_1 ->         la_liga: 0.934 (n=44)
+       bundesliga ->  premier_league: 0.385 (n=43)
+   premier_league ->         serie_a: 1.012 (n=37)
+          serie_a ->  premier_league: 0.593 (n=36)
+   premier_league ->         la_liga: 0.764 (n=33)
+          ligue_1 ->      bundesliga: 0.906 (n=32)
+    primeira_liga ->         ligue_1: 0.682 (n=32)
+
+VALIDATION EXAMPLES: 20
+  Harry Kane (bundesliga)
+    Best target: premier_league (+0.594 contr/90)
+  Serhou Guirassy (bundesliga)
+    Best target: premier_league (+0.579 contr/90)
+  Loïs Openda (bundesliga)
+    Best target: premier_league (+0.564 contr/90)
+  Luuk de Jong (eredivisie)
+    Best target: premier_league (+0.542 contr/90)
+  Vangelis Pavlidis (eredivisie)
+    Best target: premier_league (+0.529 contr/90)
