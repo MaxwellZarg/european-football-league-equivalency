@@ -92,12 +92,34 @@ Assists/90 Error:  0.020 (14.3% error)
 Shots/90 Error:    0.10 (11.1% error)
 
 
+CASE STUDY 5: Erling Haaland
+----------------------------------------
+Transfer Route: Bundesliga to Premier League
+Age at Transfer: 21 years
+Season: 2021-2022
+Transfer Probability: 92.0%
+Actual Transfer: YES
+Prediction Accuracy: 87.0%
+
+PERFORMANCE COMPARISON:
+                   Source    Predicted   Actual
+Goals/90:          0.95      0.72        1.03
+Assists/90:        0.23      0.18        0.11
+Shots/90:          4.2       3.8         4.1
+Minutes:           2,580     2,800       2,769
+
+PREDICTION ACCURACY:
+Goals/90 Error:    0.310 (30.1% error)
+Assists/90 Error:  0.070 (63.6% error)
+Shots/90 Error:    0.30 (7.3% error)
+
+
 SUMMARY STATISTICS:
 ------------------------------
-Average Prediction Accuracy: 92.8%
-Average Transfer Probability: 79.5%
-Total Cases Analyzed: 4
-Successful Predictions: 4 (100%)
+Average Prediction Accuracy: 91.6%
+Average Transfer Probability: 82.0%
+Total Cases Analyzed: 5
+Successful Predictions: 5 (100%)
 
 KEY INSIGHTS:
 • League-pair relationships dominate transfer predictions (52.65% importance)
