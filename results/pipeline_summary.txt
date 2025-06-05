@@ -1,0 +1,27 @@
+EUROPEAN TRANSFER PREDICTION PIPELINE SUMMARY
+============================================================
+
+Pipeline executed: 2025-06-04 17:07:40
+
+DATA SUMMARY:
+  Total Players: 100,310
+  Total Features: 157
+  Transfer Rate: 65.1%
+  Leagues: premier_league, la_liga, serie_a, bundesliga, ligue_1, primeira_liga, eredivisie
+
+MODEL PERFORMANCE:
+  Best Model: random_forest
+  Accuracy: 1.000
+  ROC AUC: 1.000
+
+TOP 10 FEATURES:
+   1. league_pair: 0.5265
+   2. games: 0.0506
+   3. team_total_minutes: 0.0288
+   4. minutes_90s: 0.0175
+   5. minutes: 0.0167
+   6. minutes_pct: 0.0164
+   7. goals_team_share: 0.0135
+   8. assists_team_share: 0.0098
+   9. style_adaptation_required: 0.0096
+  10. passes_completed_short: 0.0094

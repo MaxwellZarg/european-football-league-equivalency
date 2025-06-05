@@ -92,6 +92,32 @@ leagues:
     fbref_name: "League-Two"
     data_path: "England"
 
+# Common statistics available across all leagues
+common_stats:
+  - "player"
+  - "nationality" 
+  - "position"
+  - "team"
+  - "age"
+  - "birth_year"
+  - "games"
+  - "games_starts"
+  - "minutes"
+  - "minutes_90s"
+  - "goals"
+  - "assists"
+  - "goals_assists"
+  - "goals_pens"
+  - "pens_made"
+  - "pens_att"
+  - "cards_yellow"
+  - "cards_red"
+  - "goals_per90"
+  - "assists_per90"
+  - "goals_assists_per90"
+  - "goals_pens_per90"
+  - "goals_assists_pens_per90"
+
 # Data availability mapping by league and time period
 data_availability:
   # Column availability by stat file type
@@ -388,41 +414,16 @@ data_files:
 
 # Season configurations by league type
 seasons:
-  # All seasons available
-  all_seasons:
-    - "2014-2015"
-    - "2015-2016" 
-    - "2016-2017"
-    - "2017-2018"
-    - "2018-2019"
-    - "2019-2020"
-    - "2020-2021"
-    - "2021-2022"
-    - "2022-2023"
-    - "2023-2024"
-  
-  # European leagues (complete stats era)
-  european_seasons:
-    - "2017-2018"
-    - "2018-2019"
-    - "2019-2020"
-    - "2020-2021"
-    - "2021-2022"
-    - "2022-2023"
-    - "2023-2024"
-  
-  # English leagues (full historical data)
-  english_seasons:
-    - "2014-2015"
-    - "2015-2016"
-    - "2016-2017"
-    - "2017-2018"
-    - "2018-2019"
-    - "2019-2020"
-    - "2020-2021"
-    - "2021-2022"
-    - "2022-2023"
-    - "2023-2024"
+  - "2014-2015"
+  - "2015-2016"
+  - "2016-2017"
+  - "2017-2018"
+  - "2018-2019"
+  - "2019-2020"
+  - "2020-2021"
+  - "2021-2022"
+  - "2022-2023"
+  - "2023-2024"
 
 # League groupings for different types of analysis
 league_groups:
